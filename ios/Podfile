@@ -19,6 +19,7 @@ target 'Sofit' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+
   target 'SofitTests' do
     inherit! :complete
     # Pods for testing
