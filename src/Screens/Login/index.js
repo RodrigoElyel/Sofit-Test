@@ -1,4 +1,4 @@
-import { View, Text, StatusBar } from 'react-native'
+import { View, Text, StatusBar, Image } from 'react-native'
 import React from 'react'
 
 // Components
@@ -9,14 +9,20 @@ import Button from '../../Components/Button'
 // API
 import { login } from '../../Api/Auth'
 
+
 // ALERTS
 import { showMessage, hideMessage } from "react-native-flash-message";
+
+// AsyncStorage
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 import colors from '../../Styles/colors'
 
 
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
 
   const [email, setEmail] = React.useState('')
 
@@ -36,6 +42,9 @@ const LoginScreen = () => {
       });
 
       await AsyncStorage.setItem('@storage:user', JSON.stringify(response))
+
+      navigation.navigate('Home')
+
     } else {
       showMessage({
         message: "Falha",
@@ -50,7 +59,6 @@ const LoginScreen = () => {
 
   const submit = () => {
 
-    console.log(!email.length)
 
     if (!email.length) {
       showMessage({
@@ -63,23 +71,31 @@ const LoginScreen = () => {
     } else {
       autheticate()
     }
-    
+
   }
 
   return (
-    <Screen style={{justifyContent: 'center'}}>
-      <Input
-        styleContainer={{ marginTop: 8, width: '90%', alignSelf: 'center' }}
-        placeholder="email"
-        value={email}
-        onChange={value => setEmail(value)}
-        keybordType="email-address"
-      />
-      <Button
-        styleContainer={{ marginTop: 8, width: '90%', alignSelf: 'center', backgroundColor: colors.gold }}
-        label="Entrar"
-        onPress={() => submit()}
-      />
+    <Screen style={{ justifyContent: 'center', backgroundColor: colors.greenStrong }}>
+
+      <Image source={require('../../Assets/Images/loginIcon.png')} style={{ alignSelf: 'center' }} resizeMode="contain" />
+
+
+      <View>
+        <Input
+          styleContainer={{ marginTop: 8, width: '90%', alignSelf: 'center' }}
+          placeholder="Digite seu e-mail"
+          label={'E-mail'}
+          value={email}
+          onChange={value => setEmail(value)}
+          keybordType="email-address"
+        />
+        <Button
+          styleContainer={{ marginTop: 8, width: '90%', alignSelf: 'center', backgroundColor: colors.green }}
+          label="Entrar"
+          onPress={() => submit()}
+        />
+
+      </View>
 
     </Screen>
   )

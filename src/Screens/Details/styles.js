@@ -2,7 +2,8 @@ import styled from "styled-components/native";
 import colors from '../../Styles/colors'
 
 export const Container = styled.TouchableOpacity`
-    height: 60px;
+    width: 90%;
+    min-height: 150px;
     min-width: 250px;
     padding: 12px;
     margin: 10px 0px;
@@ -10,9 +11,10 @@ export const Container = styled.TouchableOpacity`
     background-color: #fff;
     border-radius: 6px;
     border-width: 1px;
-    border-color: ${() => colors.greenStrong};
-    flex-direction: row;
-    justify-content: space-evenly;
+    border-color: ${() => colors.gray};
+    flex-direction: column;
+    justify-content: space-around;
+    align-self: center;
 
 `
 
@@ -32,9 +34,5 @@ export const Body = styled.View`
 `
 
 export const Text = styled.Text`
-    margin: 20px 0px;
-    align-self: center;
-    color: ${() => colors.greenStrong};
-    font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
     font-size: ${({size}) => size ? `${size}px` : '18px'};
 `

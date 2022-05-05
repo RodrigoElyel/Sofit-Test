@@ -16,12 +16,16 @@ const Stack = createStackNavigator();
 const StackScreen = () => {
     return (
         <Stack.Navigator
-        screenOptions={{
-            headerShown: true,
-            headerTintColor: colors.black,
-            headerStyle: { backgroundColor: colors.green },
-            headerTitleAlign: 'center',
-        }}
+            screenOptions={{
+                headerShown: true,
+                headerTintColor: colors.black,
+                headerStyle: {
+                    backgroundColor: colors.greenStrong,
+                    elevation: 0,
+                    shadowOpacity: 0, 
+                },
+                headerTitleAlign: 'center',
+            }}
         >
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />

@@ -9,10 +9,20 @@ export const TextInput = styled.TextInput`
 `
 
 export const Container = styled.View`
+    border-radius: 8px;
+    flex-direction: column;
+`
+
+export const Box = styled.View`
     height: 50px;
     border-radius: 8px;
     flex-direction: row;
     background-color: #fff;
     border-width: 1px;
     border-color: #ced4da;
+`
+
+export const Text = styled.Text`
+    margin-bottom: 8px;
+    font-size: ${({size}) => size ? `${size}px` : '18px'};
 `

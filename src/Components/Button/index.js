@@ -1,8 +1,8 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
 
 // Styled-Component
-import { Container, TextInput } from './styles'
+import { Container, Text } from './styles'
 
 const Button = ({ label, onPress, disabled, styleContainer }) => {
   return (
