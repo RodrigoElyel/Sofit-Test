@@ -7,7 +7,7 @@ export const Container = styled.TouchableOpacity`
     padding: 12px;
     margin: 10px 0px;
     align-items: center;
-    background-color: ${() => colors.white};;
+    background-color: ${() => colors.lightgray};;
     border-radius: 10px;
     border-width: 1px;
     border-color: ${() => colors.greenStrong};

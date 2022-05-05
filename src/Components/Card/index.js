@@ -8,6 +8,7 @@ import moment from 'moment'
 import { Container, Text, Center, Left, Right } from './styles'
 
 const Card = ({ expense, onPress, onPressRemove, styleContainer }) => {
+
   return (
     <Container
       style={styleContainer}
@@ -28,7 +29,7 @@ const Card = ({ expense, onPress, onPressRemove, styleContainer }) => {
 
         <Text size={14} bold>Data da criação:</Text>
         <Text size={14} marginBottom={10}>
-          {moment(expense.data).format('DD-MM-YYYY')}
+          {moment(expense.date).add(1, 'days').format('DD/MM/YYYY')}
         </Text>
 
         <Text size={14} bold>Valor:</Text>

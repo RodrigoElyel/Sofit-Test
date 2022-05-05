@@ -14,6 +14,7 @@ import { showMessage, hideMessage } from "react-native-flash-message";
 // Components
 import Screen from '../../Components/Screen';
 import Card from '../../Components/Card';
+import Input from '../../Components/Input';
 
 // RN paper
 import { FAB } from 'react-native-paper';
@@ -21,10 +22,13 @@ import { FAB } from 'react-native-paper';
 // Colors
 import colors from '../../Styles/colors'
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, route }) => {
 
     const [user, setUser] = React.useState(null)
     const [expenses, setExpenses] = React.useState([])
+    const [search, setSearch] = React.useState('')
+
+    const refresh = route.params.refresh
 
     const getUser = async () => {
 
@@ -117,24 +121,33 @@ const HomeScreen = ({ navigation }) => {
             key={item._id}
             expense={item}
             styleContainer={{ width: "90%", alignSelf: "center" }}
-            onPress={() => navigation.navigate('Details', { expense: item, user: user })}
+            onPress={() => navigation.navigate('Details', { expense: item, user: user, refresh: refresh})}
             onPressRemove={() => removeExpense(item)}
         />
     );
 
+    const filterExpenses = search !== '' ? expenses.filter(expense => expense.item.includes(search)) : expenses
+
 
     React.useEffect(() => {
         getUser()
-    }, [])
+    }, [refresh])
 
     return (
         <>
-            <Screen style={{ backgroundColor: colors.white }}>
+            <Screen style={{ backgroundColor: colors.lightgray }}>
 
                 <Text size={20} bold >Minhas Despesas</Text>
 
+                <Input
+                    styleContainer={{ width: '70%', alignSelf: 'center', borderWidth: 1, borderColor: colors.greenStrong, marginBottom: 15 }}
+                    placeholder="Buscar por descrição..."
+                    value={search}
+                    onChange={value => setSearch(value)}
+                />
+
                 <FlatList
-                    data={expenses}
+                    data={filterExpenses}
                     renderItem={renderItem}
                     keyExtractor={item => item._id}
                 />
@@ -147,9 +160,11 @@ const HomeScreen = ({ navigation }) => {
                     margin: 16,
                     right: 0,
                     bottom: 10,
+                    backgroundColor: colors.greenStrong
                 }}
                 big
                 label="Adicionar"
+                color={colors.black}
                 onPress={() => console.log('Pressed')}
             />
         </>

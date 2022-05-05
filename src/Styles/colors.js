@@ -10,7 +10,7 @@ export default {
     azulClarinho: "#90e0ef",
     escuro: "#2f3640",  
     medium: '#6e6969',
-    lightgray: '#f8f8f4',
+    lightgray: '#F3F3F3',
     danger: '#ff5252',
     amarelo: "#f0932b",
     vermelho: "#ba181b",

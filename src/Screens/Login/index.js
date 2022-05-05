@@ -43,7 +43,7 @@ const LoginScreen = ({ navigation }) => {
 
       await AsyncStorage.setItem('@storage:user', JSON.stringify(response))
 
-      navigation.navigate('Home')
+      navigation.navigate('Home', {refresh: true})
 
     } else {
       showMessage({
@@ -83,6 +83,7 @@ const LoginScreen = ({ navigation }) => {
       <View>
         <Input
           styleContainer={{ marginTop: 8, width: '90%', alignSelf: 'center' }}
+          styleLabel={{width: '90%'}}
           placeholder="Digite seu e-mail"
           label={'E-mail'}
           value={email}

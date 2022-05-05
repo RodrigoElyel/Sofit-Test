@@ -58,3 +58,23 @@ export const deleteExpenseByID = async (_id, token) => {
         console.log(JSON.stringify(e, null, 2));
     }
 }
+
+export const editExpenseByID = async (_id, data, token) => {
+
+    try {
+        const resp = await axios({
+            method: 'PUT',
+            url: `${baseURL}/expenses/${_id}`,
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+            data: data,
+            json: true,
+        })
+
+        return resp.data;
+    } catch (e) {
+        console.log(JSON.stringify(e, null, 2));
+    }
+}
