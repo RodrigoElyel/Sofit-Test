@@ -21,6 +21,26 @@ export const allExpenses = async (page, perPage, token) => {
     }
 }
 
+export const createExpense = async (data, token) => {
+
+    try {
+        const resp = await axios({
+            method: 'POST',
+            url: `${baseURL}/expenses`,
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+            data: data,
+            json: true,
+        })
+
+        return resp.data;
+    } catch (e) {
+        console.log(JSON.stringify(e, null, 2));
+    }
+}
+
 export const expensesByID = async (_id, token) => {
 
     try {

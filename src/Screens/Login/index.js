@@ -1,5 +1,6 @@
-import { View, Text, StatusBar, Image } from 'react-native'
+import { View, StatusBar, Image } from 'react-native'
 import React from 'react'
+import { Text, Header, Body, MyImage } from './styles'
 
 // Components
 import Input from '../../Components/Input'
@@ -24,7 +25,8 @@ import colors from '../../Styles/colors'
 
 const LoginScreen = ({ navigation }) => {
 
-  const [email, setEmail] = React.useState('')
+  const [email, setEmail] = React.useState('teste@gmail.com')
+  const [ animation, setAnimation] = React.useState(false)
 
   console.log(email)
 
@@ -43,7 +45,13 @@ const LoginScreen = ({ navigation }) => {
 
       await AsyncStorage.setItem('@storage:user', JSON.stringify(response))
 
-      navigation.navigate('Home', {refresh: true})
+      setAnimation(true)
+
+      setTimeout(() => {
+        navigation.navigate('Home', { refresh: true })
+      }, 1000)
+
+      
 
     } else {
       showMessage({
@@ -75,15 +83,26 @@ const LoginScreen = ({ navigation }) => {
   }
 
   return (
-    <Screen style={{ justifyContent: 'center', backgroundColor: colors.greenStrong }}>
+    <Screen style={{ backgroundColor: colors.greenStrong }}>
 
-      <Image source={require('../../Assets/Images/loginIcon.png')} style={{ alignSelf: 'center' }} resizeMode="contain" />
+      <Header>
+
+        <Text size={30} bold >My Expenses</Text>
+        <MyImage
+          source={require('../../Assets/Images/loginIcon.png')}
+          resizeMode="contain"
+          animation={animation ? 'fadeOutRightBig' : 'pulse'}
+          delay={animation ? 1000 : 100}
+          iterationCount={animation ? 1 : 'infinite'}
+        />
+
+      </Header>
 
 
-      <View>
+      <Body>
         <Input
           styleContainer={{ marginTop: 8, width: '90%', alignSelf: 'center' }}
-          styleLabel={{width: '90%'}}
+          styleLabel={{ width: '90%' }}
           placeholder="Digite seu e-mail"
           label={'E-mail'}
           value={email}
@@ -96,7 +115,7 @@ const LoginScreen = ({ navigation }) => {
           onPress={() => submit()}
         />
 
-      </View>
+      </Body>
 
     </Screen>
   )

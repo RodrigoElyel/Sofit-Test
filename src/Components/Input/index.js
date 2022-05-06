@@ -17,7 +17,7 @@ const Input = ({ icon, mask, label, keybordType = 'default', editable, onChange,
               type={mask.type}
               options={mask.options}
               value={value}
-              placeholder="Digite a nova informação"
+              placeholder={placeholder}
               onChangeText={value => onChange(value)}
               editable={editable}
             />

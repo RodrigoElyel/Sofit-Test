@@ -165,7 +165,7 @@ const HomeScreen = ({ navigation, route }) => {
                 big
                 label="Adicionar"
                 color={colors.black}
-                onPress={() => console.log('Pressed')}
+                onPress={() => navigation.navigate('Create', {user: user, refresh: refresh})}
             />
         </>
 

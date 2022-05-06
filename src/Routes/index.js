@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../Screens/Home'
 import DetailsScreen from '../Screens/Details'
 import LoginScreen from '../Screens/Login'
+import CreateScreen from '../Screens/Create'
 
 import colors from '../Styles/colors';
 
@@ -30,6 +31,7 @@ const StackScreen = () => {
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Details" component={DetailsScreen} />
+            <Stack.Screen name="Create" component={CreateScreen} />
         </Stack.Navigator>
     )
 }

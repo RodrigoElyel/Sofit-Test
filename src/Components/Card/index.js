@@ -27,7 +27,7 @@ const Card = ({ expense, onPress, onPressRemove, styleContainer }) => {
 
 
 
-        <Text size={14} bold>Data da criação:</Text>
+        <Text size={14} bold>Data da despesa:</Text>
         <Text size={14} marginBottom={10}>
           {moment(expense.date).add(1, 'days').format('DD/MM/YYYY')}
         </Text>
